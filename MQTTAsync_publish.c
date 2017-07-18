@@ -28,7 +28,7 @@
 #define ADDRESS     "tcp://sungura1-angani-ke-host.africastalking.com"
 #define CLIENTID    "Edison"
 #define TOPIC       "Host"
-#define PAYLOAD     "254"
+#define PAYLOAD     88 //"254"
 #define QOS         1
 #define TIMEOUT     10000L
 
