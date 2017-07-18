@@ -28,9 +28,13 @@
 #define ADDRESS     "tcp://sungura1-angani-ke-host.africastalking.com"
 #define CLIENTID    "Edison"
 #define TOPIC       "Host"
-#define PAYLOAD     88 //"254"
+//#define PAYLOAD     88 //"254"
 #define QOS         1
 #define TIMEOUT     10000L
+
+int datai =88;
+char PAYLOAD [41];
+sprintf(PAYLOAD,"%d",datai);
 
 volatile MQTTAsync_token deliveredtoken;
 
