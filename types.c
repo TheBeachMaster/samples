@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include "string.h"
 
-char cdata [10] ;
+
 int datai = 254;
 
-cdata = itoa(datac,datai,10);
+char mydata [] = (char *)datai;
 
 
 int main()
 {
     printf("Getting started...\n");
-    printf("Your int is %i ,your char is %c",datai,cdata);
+    printf("Your int is %i ,your char is %c",datai,mydata);
     return 0;
 }
