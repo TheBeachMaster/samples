@@ -36,7 +36,7 @@ int datai = 88;
 char PAYLOAD [41];
 //sprintf(PAYLOAD,"%d",datai);
 
-PAYLOAD = &datai;
+//PAYLOAD = &datai;
 
 volatile MQTTAsync_token deliveredtoken;
 
@@ -103,7 +103,7 @@ void onConnect(void* context, MQTTAsync_successData* response)
 	int rc;
 
 	printf("Successful connection\n");
-	
+	sprintf(PAYLOAD,"%d",datai);
 	opts.onSuccess = onSend;
 	opts.context = client;
 
@@ -123,6 +123,7 @@ void onConnect(void* context, MQTTAsync_successData* response)
 
 int main(int argc, char* argv[])
 {
+	sprintf(PAYLOAD,"%d",datai);
 	MQTTAsync client;
 	MQTTAsync_connectOptions conn_opts = MQTTAsync_connectOptions_initializer;
 	MQTTAsync_message pubmsg = MQTTAsync_message_initializer;

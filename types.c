@@ -12,6 +12,6 @@ int main()
 {
     printf("Getting started...\n");
     sprintf(mydata,"%d",datai);
-    printf("Your int is %i ,your char is %s",datai,mydata);
+    printf("Your int is %i ,your char is %s\n",datai,mydata);
     return 0;
 }
