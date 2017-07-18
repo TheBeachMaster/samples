@@ -5,7 +5,7 @@
 
 int datai = 254;
 
-char mydata [] = (char *)datai;
+char mydata = (char *)datai;
 
 
 int main()
