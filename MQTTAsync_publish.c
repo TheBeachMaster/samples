@@ -32,9 +32,11 @@
 #define QOS         1
 #define TIMEOUT     10000L
 
-int datai =88;
+int datai = 88;
 char PAYLOAD [41];
-sprintf(PAYLOAD,"%d",datai);
+//sprintf(PAYLOAD,"%d",datai);
+
+PAYLOAD = &datai;
 
 volatile MQTTAsync_token deliveredtoken;
 
