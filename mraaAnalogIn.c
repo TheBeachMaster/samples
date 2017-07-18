@@ -16,7 +16,7 @@ running =-1;
 int main()
 {
 mraa_aio_context adc_a0;
-uint16_t adc_value = 0;
+int adc_value = 0;
 float adc_value_float =0.0;
 mraa_result_t r = MRAA_SUCCESS;
 
@@ -30,7 +30,7 @@ signal(SIGINT,sig_handler);
 while(running == 0){
 adc_value = mraa_aio_read(adc_a0);
 adc_value_float = mraa_aio_read_float(adc_a0);
-fprintf(stdout, "ADC A0 read %X - %d\n",adc_value,adc_value);
+fprintf(stdout, "ADC A0 read %X - %i\n",adc_value,adc_value);
 fprintf(stdout, "ADC A0 read float - %.5f (Ctrl+C to exit)\n",adc_value_float);
 usleep(1500000);
 }
