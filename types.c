@@ -5,12 +5,13 @@
 
 int datai = 254;
 
-char mydata = (char *)datai;
+char mydata [41];
 
 
 int main()
 {
     printf("Getting started...\n");
-    printf("Your int is %i ,your char is %c",datai,mydata);
+    sprintf(mydata,"%d",datai);
+    printf("Your int is %i ,your char is %s",datai,mydata);
     return 0;
 }
