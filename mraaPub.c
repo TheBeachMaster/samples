@@ -77,8 +77,8 @@ int main()
 
 //Mraa Variables
 mraa_aio_context adc_a0;
-int adc_value = 0;
-float adc_value_float =0.0;
+ int adc_value = 0;
+// float adc_value_float =0.0;
 mraa_result_t r = MRAA_SUCCESS;
 
 adc_a0 = mraa_aio_init(0);
@@ -95,6 +95,7 @@ signal(SIGINT,sig_handler);
                     printf("Failed to connect, return code %d\n", rc);
                     exit(EXIT_FAILURE);
                 }
+                adc_value = mraa_aio_read(adc_a0);
                 fprintf(stdout, "ADC A0 read %d\n",adc_value);
                 sprintf(PAYLOAD,"%d",adc_value);
                 //  sprintf(PAYLOAD,"%d",dataVal);
