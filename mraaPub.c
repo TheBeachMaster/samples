@@ -26,6 +26,7 @@ Compile -> cc -o mraaPub mraaPub.c -lmraa -lpaho-mqtt3a
 
 //Paho Specific Libs and Header Files
 #include "MQTTAsync.h"
+#include "MQTTClient.h"
 
 #if !defined(WIN32)
 #include <unistd.h>
