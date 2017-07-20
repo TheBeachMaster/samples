@@ -44,8 +44,6 @@ char PAYLOAD [41];
 //Mraa Variables
 
 
-//MQTT Specific Funcs
-volatile MQTTAsync_token deliveredtoken;
 
 int finished = 0;
 
