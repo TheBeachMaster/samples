@@ -70,14 +70,10 @@ int main()
     MQTTClient_deliveryToken token;
     int rc;
     MQTTClient_create(&client, ADDRESS, CLIENTID,
-        MQTTCLIENT_PERSISTENCE_NONE, NULL);
+    MQTTCLIENT_PERSISTENCE_NONE, NULL);
     conn_opts.keepAliveInterval = 20;
     conn_opts.cleansession = 1;
-    if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
-    {
-        printf("Failed to connect, return code %d\n", rc);
-        exit(EXIT_FAILURE);
-    }
+    
 
 //Mraa Variables
 mraa_aio_context adc_a0;
@@ -94,9 +90,14 @@ signal(SIGINT,sig_handler);
 
     while(running == 0)
     {
-        
+                if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
+                {
+                    printf("Failed to connect, return code %d\n", rc);
+                    exit(EXIT_FAILURE);
+                }
                 fprintf(stdout, "ADC A0 read %d\n",adc_value);
                 sprintf(PAYLOAD,"%d",adc_value);
+                //  sprintf(PAYLOAD,"%d",dataVal);
                 pubmsg.payload = PAYLOAD;
                 pubmsg.payloadlen = strlen(PAYLOAD);
                 pubmsg.qos = QOS;
@@ -107,7 +108,6 @@ signal(SIGINT,sig_handler);
                         (int)(TIMEOUT/1000), PAYLOAD, TOPIC, CLIENTID);
                 rc = MQTTClient_waitForCompletion(client, token, TIMEOUT);
                 printf("Message with delivery token %d delivered\n", token);
-                usleep(1500000);
                 
     }
     r =  mraa_aio_close(adc_a0);
