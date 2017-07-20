@@ -3,7 +3,7 @@
 #include "string.h"
 #include "MQTTClient.h"
 
-#define ADDRESS     "tcp://localhost:1883"
+#define ADDRESS     "tcp://sungura1-angani-ke-host.africastalking.com:1883"
 #define CLIENTID    "Edison"
 #define TOPIC       "Data"
 
