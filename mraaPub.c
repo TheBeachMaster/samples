@@ -98,13 +98,13 @@ signal(SIGINT,sig_handler);
                 adc_value = mraa_aio_read(adc_a0);
                 fprintf(stdout, "ADC A0 read %d\n",adc_value);
                 sprintf(PAYLOAD,"%d",adc_value);
-                //  sprintf(PAYLOAD,"%d",dataVal);
+               
                 pubmsg.payload = PAYLOAD;
                 pubmsg.payloadlen = strlen(PAYLOAD);
                 pubmsg.qos = QOS;
                 pubmsg.retained = 0;
                 MQTTClient_publishMessage(client, TOPIC, &pubmsg, &token);
-                printf("Waiting for up to %d seconds for publication of %s\n"
+                printf("Waiting for  %d seconds for publication of %s\n"
                         "on topic %s for client with ClientID: %s\n",
                         (int)(TIMEOUT/1000), PAYLOAD, TOPIC, CLIENTID);
                 rc = MQTTClient_waitForCompletion(client, token, TIMEOUT);

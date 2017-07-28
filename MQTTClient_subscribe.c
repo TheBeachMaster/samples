@@ -26,6 +26,8 @@
 #define QOS         1
 #define TIMEOUT     10000L
 
+char payLoadData[BUFSIZ];
+
 volatile MQTTClient_deliveryToken deliveredtoken;
 
 void delivered(void *context, MQTTClient_deliveryToken dt)
@@ -49,6 +51,8 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         putchar(*payloadptr++);
     }
     putchar('\n');
+    sprintf(payLoadData,"%s",message->payload);
+    printf("Parsed Payload value: %s\n",payLoadData);
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
     return 1;

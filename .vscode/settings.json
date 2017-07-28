@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "windows.h": "c",
+        "stdlib.h": "c",
+        "platform_types.h": "c",
+        "stdio.h": "c"
+    }
+}
