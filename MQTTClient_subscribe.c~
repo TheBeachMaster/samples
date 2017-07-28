@@ -38,7 +38,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
 {
     int i;
     char* payloadptr;
-    char dataSt;
+    char dataSt [64];
     printf("Message arrived\n");
     printf("     topic: %s\n", topicName);
     printf("   message: ");
