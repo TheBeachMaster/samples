@@ -49,9 +49,10 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     for(i=0; i<message->payloadlen; i++)
     {
         putchar(*payloadptr++);
+        
     }
     putchar('\n');
-    sprintf(payLoadData,"%s",message->payload);
+    sprintf(payLoadData,"%s",*payloadptr);
     printf("Parsed Payload value: %s\n",payLoadData);
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
