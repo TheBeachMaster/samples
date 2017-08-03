@@ -27,6 +27,12 @@
 #define TIMEOUT     10000L
 
 char payLoadData[BUFSIZ];
+char *offCmd = "OFF";
+char *onCmd = "ON";
+//strcpy(offCmd,"OFF");
+//strcpy(onCmd,"ON");
+int onRes;
+int offRes;
 
 volatile MQTTClient_deliveryToken deliveredtoken;
 
@@ -41,6 +47,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     int i;
     char* payloadptr;
     char dataSt;
+    
     printf("Message arrived\n");
     printf("     topic: %s\n", topicName);
     printf("   message: ");
@@ -56,7 +63,17 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     putchar('\n');
     sprintf(payLoadData,"%s",(char*)message->payload);
     printf("Parsed Payload value: %s\n",payLoadData);
-//	if(payLoad)
+	onRes = strcmp(onCmd,payLoadData);
+	offRes = strcmp(offCmd,payLoadData);
+if(onRes == 0){
+printf("ON Command Received\n");
+}else if(offRes == 0)
+
+{
+	printf("OFF Command Received\n");
+}else {
+	printf("Unknown Command\n");
+}
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
     return 1;
