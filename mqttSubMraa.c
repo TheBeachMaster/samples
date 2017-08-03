@@ -85,7 +85,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         printf("New mesage\n");
         printf("         from the topic: %s\n",topicName);
         sprintf(payLoadData,"%s",(char*)message->payload);
-        printf("         message contets: %s\n",payLoadData);
+        printf("         message contents: %s\n",payLoadData);
 
         //Let's inspect our payload
         onRes = strcmp(onCmd,payLoadData);//Compare Payload Data with ON
