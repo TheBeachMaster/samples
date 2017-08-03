@@ -40,7 +40,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
 {
     int i;
     char* payloadptr;
-
+    char dataSt;
     printf("Message arrived\n");
     printf("     topic: %s\n", topicName);
     printf("   message: ");
@@ -48,12 +48,15 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     payloadptr = message->payload;
     for(i=0; i<message->payloadlen; i++)
     {
+//	    dataSt[i] = *payloadptr++; 
         putchar(*payloadptr++);
-        
+//	dataSt[i] = *payloadptr++;
     }
+    dataSt = message->payload;
     putchar('\n');
     sprintf(payLoadData,"%s",*payloadptr);
     printf("Parsed Payload value: %s\n",payLoadData);
+
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
     return 1;
