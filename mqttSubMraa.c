@@ -92,12 +92,12 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         onRes = strcmp(onCmd,payLoadData);//Compare Payload Data with ON
         offRes = strcmp(offCmd,payLoadData);//Compare Payload Data with OFF
 
-        //Bring in Mraa
-        mraa_init();
-        mraa_gpio_context m_gpio;
+        // //Bring in Mraa
+        // mraa_init();
+        // mraa_gpio_context m_gpio;
 
-        m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
-        mraa_gpio_dir(m_gpio,MRAA_GPIO_OUTPUT);//Set this pin as OUTPUT
+        // m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
+        // mraa_gpio_dir(m_gpio,MRAA_GPIO_OUTPUT);//Set this pin as OUTPUT
 
         //Check our Payloads
         if(onRes == 0) //We have recived ON as  command
@@ -163,6 +163,14 @@ void connlost(void *context, char *cause)
 
 int main(void)
 {
+        
+        //Bring in Mraa
+    mraa_init();
+    mraa_gpio_context m_gpio;
+
+    m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
+    mraa_gpio_dir(m_gpio,MRAA_GPIO_OUTPUT);//Set this pin as OUTPUT
+    
     MQTTClient client;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     int rc;
