@@ -24,7 +24,7 @@ Author:
 /*
 Paho Client Libs
 */
-#include "stdio.h"
+#include <stdio.h>
 #include "stdlib.h"
 #include "string.h"
 #include "MQTTClient.h"
@@ -58,7 +58,8 @@ We'll use these variables to check if the
 comparisons check out;
 should return 0 if so,else something else will be done
 */
-int onRes,offRes;
+int onRes;
+int offRes;
 
 //We'll be dealing with a QoS1 payload...So we'll set that up
 volatile MQTTClient_deliveryToken deliveredtoken;
@@ -99,7 +100,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         mraa_gpio_dir(m_gpio,MRAA_GPIO_OUTPUT);//Set this pin as OUTPUT
 
         //Check our Payloads
-        if(onRes == 0) //We have recived ON as  commands
+        if(onRes == 0) //We have recived ON as  command
         {
                 /*We could essentially write to the pin here but
                 let's experiment with this state thing...
@@ -160,7 +161,7 @@ void connlost(void *context, char *cause)
     printf("     cause: %s\n", cause);
 }
 
-int main(int argc, char* argv[])
+int main(void)
 {
     MQTTClient client;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
