@@ -106,6 +106,7 @@ int main(int argc, char* argv[])
     }
     printf("Subscribing to topic %s\nfor client %s using QoS%d\n\n"
            "Press Q<Enter> to quit\n\n", TOPIC, CLIENTID, QOS);
+            printf("Parsed Payload Main Value: %s\n",payLoadData);
     MQTTClient_subscribe(client, TOPIC, QOS);
 
     do 
