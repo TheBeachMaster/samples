@@ -31,9 +31,9 @@ char *offCmd = "OFF";
 char *onCmd = "ON";
 //strcpy(offCmd,"OFF");
 //strcpy(onCmd,"ON");
-int onRes;
-int offRes;
-int state;
+int onRes,offRes;
+
+
 
 
 volatile MQTTClient_deliveryToken deliveredtoken;
@@ -49,7 +49,8 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     int i;
     char* payloadptr;
     char dataSt;
-    
+    int state;
+
     printf("Message arrived\n");
     printf("     topic: %s\n", topicName);
     printf("   message: ");
@@ -132,7 +133,7 @@ int main(int argc, char* argv[])
 
     do 
     {
-        printf("State is %i \n",state);
+        
         ch = getchar();
     } while(ch!='Q' && ch != 'q');
 
