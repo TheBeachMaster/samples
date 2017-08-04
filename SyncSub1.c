@@ -15,10 +15,13 @@
 int main(int argc,char * arg[])
 {
     MQTTClient client;
+    MQTTClient_message  message = MQTTClient_message_initializer;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     // MQTTClient_message pubmsg = MQTTClient_message_initializer;
     MQTTClient_deliveryToken token;
     int rc;
+    int ch;
+
     MQTTClient_create(&client, ADDRESS, CLIENTID,
                       MQTTCLIENT_PERSISTENCE_NONE, NULL);
     conn_opts.keepAliveInterval = 20;
@@ -29,9 +32,9 @@ int main(int argc,char * arg[])
         exit(EXIT_FAILURE);
     }
     MQTTClient_subscribe(client, TOPIC, QOS);
-    MQTTClient_receive(client,*TOPIC,strlen(PAYLOAD),*message,TIMEOUT);
+    MQTTClient_receive(client,TOPIC,strlen(PAYLOAD),&message,TIMEOUT);
 
-    printf("Reecived... %s\n",(char*)message->payload);
+    printf("Received... %s\n",(char*)message->payload);
 
     rc = MQTTClient_waitForCompletion(client, token, TIMEOUT);
     
