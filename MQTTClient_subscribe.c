@@ -33,6 +33,8 @@ char *onCmd = "ON";
 //strcpy(onCmd,"ON");
 int onRes;
 int offRes;
+int state;
+
 
 volatile MQTTClient_deliveryToken deliveredtoken;
 
@@ -61,6 +63,25 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     }
 //    dataSt = message->payload;
     putchar('\n');
+    onRes = strcmp(onCmd,payLoadData);//Compare Payload Data with ON
+    offRes = strcmp(offCmd,payLoadData);//Compare Payload Data with OFF
+      if(onRes == 0) //We have recived ON as  command
+        {
+                /*We could essentially write to the pin here but
+                let's experiment with this state thing...
+                */
+                state = 1;
+        } else if(offRes == 0) //We received an OFF Command
+        {
+                //Ditto...
+                state = 0;
+        } else 
+        {
+                //Ditto...
+                state = -1;
+                printf("Unknown Command\n");
+        }
+
     sprintf(payLoadData,"%s",(char*)message->payload);
     printf("Parsed Payload value: %s\n",payLoadData);
 	onRes = strcmp(onCmd,payLoadData);
@@ -111,6 +132,7 @@ int main(int argc, char* argv[])
 
     do 
     {
+        printf("State is %i \n",state);
         ch = getchar();
     } while(ch!='Q' && ch != 'q');
 
