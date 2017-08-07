@@ -31,7 +31,7 @@ int main(int argc,char  *argv[])
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
         printf("Received Data from %s: \n",TOPIC);
         //(char*)(message->payload)
-        sprintf(data,"%s",(char*)(message->payload))
+        sprintf(data,"%s",(char*)(message->payload));
         printf("Contents are %s \n",data);
         MQTTClient_freeMessage(&message);
         MQTTClient_free(&TOPIC);
