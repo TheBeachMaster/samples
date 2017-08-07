@@ -61,12 +61,10 @@ should return 0 if so,else something else will be done
 int onRes;
 int offRes;
 
- //Initialize Mraa       
 mraa_init();
-//MRAA Context
 mraa_gpio_context m_gpio;
-m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
-mraa_gpio_dir(m_gpio, MRAA_GPIO_OUT);//Set this pin as OUTPUT
+m_gpio = mraa_gpio_init(5);
+mraa_gpio_dir(m_gpio, MRAA_GPIO_OUT);
 
 //We'll be dealing with a QoS1 payload...So we'll set that up
 volatile MQTTClient_deliveryToken deliveredtoken;

@@ -5,10 +5,9 @@
 
 	mraa_init();
 	mraa_gpio_context m_gpio;
-
 	m_gpio = mraa_gpio_init(5);
-
 	mraa_gpio_dir(m_gpio, MRAA_GPIO_OUT);
+	
 int main()
 {
 
