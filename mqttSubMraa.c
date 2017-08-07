@@ -61,8 +61,12 @@ should return 0 if so,else something else will be done
 int onRes;
 int offRes;
 
+ //Initialize Mraa       
+mraa_init();
 //MRAA Context
- mraa_gpio_context m_gpio;
+mraa_gpio_context m_gpio;
+m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
+mraa_gpio_dir(m_gpio, MRAA_GPIO_OUT);//Set this pin as OUTPUT
 
 //We'll be dealing with a QoS1 payload...So we'll set that up
 volatile MQTTClient_deliveryToken deliveredtoken;
@@ -95,13 +99,6 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         onRes = strcmp(onCmd,payLoadData);//Compare Payload Data with ON
         offRes = strcmp(offCmd,payLoadData);//Compare Payload Data with OFF
 
-         //Bring in Mraa
-        // mraa_init();
-        //  mraa_gpio_context m_gpio;
-
-        m_gpio = mraa_gpio_init(5);//Initialize Digital Pin 5
-         mraa_gpio_dir(m_gpio,MRAA_GPIO_OUTPUT);//Set this pin as OUTPUT
-
         //Check our Payloads
         if(onRes == 0) //We have recived ON as  command
         {
@@ -129,7 +126,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
                 sleep(1);
                 mraa_gpio_write(m_gpio,1);
                 
-        }while(state == 1)
+        } while(state == 1);
         mraa_gpio_close(m_gpio); //!...[Interesting]
            do 
         {
@@ -144,7 +141,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
                 sleep(1);
                 mraa_gpio_write(m_gpio,0);
                 
-        }while(state == 0)
+        } while(state == 0);
         mraa_gpio_close(m_gpio);
         
         /*
@@ -167,8 +164,6 @@ void connlost(void *context, char *cause)
 int main(void)
 {
         
-        
-    mraa_init();
     
     MQTTClient client;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;

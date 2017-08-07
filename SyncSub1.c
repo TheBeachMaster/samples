@@ -31,7 +31,7 @@ int main(void)
     do
     {
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
-        MQTTClient_waitForCompletion(client, token, 5000);
+       // MQTTClient_waitForCompletion(client, token, 5000);
         printf("Received Data from %s: \n",TOPIC);
         //(char*)(message->payload)
        // sprintf(payLoadData,"%s",(char *)message->payload);
