@@ -15,7 +15,7 @@
 int main(int argc,char * arg[])
 {
     MQTTClient client;
-    MQTTClient_message*  message = MQTTClient_message_initializer;
+    MQTTClient_message*  message;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     int rc;
     int topicLen;
