@@ -61,7 +61,6 @@ should return 0 if so,else something else will be done
 int onRes;
 int offRes;
 
-mraa_init();
 mraa_gpio_context m_gpio;
 m_gpio = mraa_gpio_init(5);
 mraa_gpio_dir(m_gpio, MRAA_GPIO_OUT);
