@@ -117,26 +117,26 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
         do 
         {
                 //Turn LED ON
-                mraa_gpio_write(m_gpio,1);
+                mraa_gpio_write(m_gpio, 1);
                 sleep(1);
-                mraa_gpio_write(m_gpio,0);
+                mraa_gpio_write(m_gpio, 0);
                 sleep(1);
-                mraa_gpio_write(m_gpio,1);
+                mraa_gpio_write(m_gpio, 1);
                 
         } while(state == 1);
-        mraa_gpio_close(m_gpio); //!...[Interesting]
+       
            do 
         {
                 //Turn LED OFF
-                mraa_gpio_write(m_gpio,0);
+                mraa_gpio_write(m_gpio, 0);
                 sleep(1);
-                mraa_gpio_write(m_gpio,1);
+                mraa_gpio_write(m_gpio, 1);
                 sleep(1);
-                mraa_gpio_write(m_gpio,0);
+                mraa_gpio_write(m_gpio, 0);
                 sleep(1);
-                mraa_gpio_write(m_gpio,1);
+                mraa_gpio_write(m_gpio, 1);
                 sleep(1);
-                mraa_gpio_write(m_gpio,0);
+                mraa_gpio_write(m_gpio, 0);
                 
         } while(state == 0);
         mraa_gpio_close(m_gpio);
