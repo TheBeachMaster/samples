@@ -10,12 +10,7 @@
 #define QOS         1
 #define TIMEOUT     10000L
 
-char payLoadData[BUFSIZ];
 
-int rc;
-int topicLen;
-char* TOPIC = "Host";
-int ch;
 
 
 int main(void)
@@ -26,6 +21,11 @@ int main(void)
     MQTTClient_create(&client, ADDRESS, CLIENTID,MQTTCLIENT_PERSISTENCE_NONE, NULL);
     conn_opts.keepAliveInterval = 20;
     conn_opts.cleansession = 1;
+    char payLoadData[BUFSIZ];
+    int rc;
+    int topicLen;
+    char* TOPIC = "Host";
+    
     MQTTClient_connect(client,&conn_opts);
     MQTTClient_subscribe(client,TOPIC,QOS);
     do
@@ -33,7 +33,7 @@ int main(void)
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
         printf("Received Data from %s: \n",TOPIC);
         //(char*)(message->payload)
-        sprintf(payLoadData,"%s",(char*)message->payload);
+        sprintf(payLoadData,"%s",message->payload);
         printf("Contents are %s \n",payLoadData);
         MQTTClient_freeMessage(&message);
         MQTTClient_free(&TOPIC);
