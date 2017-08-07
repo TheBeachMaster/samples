@@ -19,7 +19,7 @@ int main(int argc,char * arg[])
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     int rc;
     int topicLen;
-    char * TOPIC = "Host";
+    char* TOPIC = "Host";
     int ch;
     MQTTClient_create(&client, ADDRESS, CLIENTID,MQTTCLIENT_PERSISTENCE_NONE, NULL);
     conn_opts.keepAliveInterval = 20;
