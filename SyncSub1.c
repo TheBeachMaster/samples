@@ -12,7 +12,7 @@
 
 
 
-int main(int argc,char  *argv[])
+int main(void)
 {
     MQTTClient client;
     MQTTClient_message*  message;
