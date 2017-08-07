@@ -12,13 +12,14 @@
 
 
 
-int main(int argc,char * arg[])
+int main(int argc,char  *argv[])
 {
     MQTTClient client;
     MQTTClient_message*  message;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     int rc;
     int topicLen;
+    char data[BUFSIZ];
     char* TOPIC = "Host";
     int ch;
     MQTTClient_create(&client, ADDRESS, CLIENTID,MQTTCLIENT_PERSISTENCE_NONE, NULL);
@@ -29,7 +30,9 @@ int main(int argc,char * arg[])
     {
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
         printf("Received Data from %s: \n",TOPIC);
-        printf("Contents are %s \n",(char*)(message->payload));
+        //(char*)(message->payload)
+        sprintf(data,"%s",(char*)(message->payload))
+        printf("Contents are %s \n",data);
         MQTTClient_freeMessage(&message);
         MQTTClient_free(&TOPIC);
     } while((rc = MQTTClient_connect(client,&conn_opts)) && (rc = MQTTClient_subscribe(client,TOPIC,QOS)) == MQTTCLIENT_SUCCESS);
