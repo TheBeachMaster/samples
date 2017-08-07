@@ -30,7 +30,7 @@ int main(int argc,char * arg[])
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
         printf("Received Data from %s: \n",TOPIC);
         printf("Contents are %s \n",(char*)(message->payload));
-        MQTTClient_freeMesage(&message);
+        MQTTClient_freeMessage(&message);
         MQTTClient_free(&TOPIC);
     } while((rc = MQTTClient_connect(client,&conn_opts)) && (rc = MQTTClient_subscribe(client,TOPIC,QOS)) == MQTTCLIENT_SUCCESS);
     MQTTClient_disconnect(client,10000);
