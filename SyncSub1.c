@@ -26,15 +26,17 @@ int main(void)
     int topicLen;
     char* TOPIC = "Host";
     
-    MQTTClient_connect(client,&conn_opts);
-    MQTTClient_subscribe(client,TOPIC,QOS);
+    // MQTTClient_connect(client,&conn_opts);
+    // MQTTClient_subscribe(client,TOPIC,QOS);
     do
     {
         MQTTClient_receive(client,&TOPIC,&topicLen,&message,2000);
+        MQTTClient_waitForCompletion(client, token, 5000);
         printf("Received Data from %s: \n",TOPIC);
         //(char*)(message->payload)
-        sprintf(payLoadData,"%s",(char *)message->payload);
-        printf("Contents are %s \n",payLoadData);
+       // sprintf(payLoadData,"%s",(char *)message->payload);
+        printf("Contents are %*s \n",(char*)(message->payload));
+        
         MQTTClient_freeMessage(&message);
         MQTTClient_free(&TOPIC);
     } while((rc = MQTTClient_connect(client,&conn_opts)) && (rc = MQTTClient_subscribe(client,TOPIC,QOS)) == MQTTCLIENT_SUCCESS);
