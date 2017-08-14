@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/TheBeachMaster/samples/issues"
   },
-  "homepage": "https://github.com/TheBeachMaster/samples#readme"
+  "homepage": "https://github.com/TheBeachMaster/samples#readme",
+  "dependencies": {
+    "mqtt": "^2.11.0",
+    "mraa": "^1.7.0"
+  }
 }
