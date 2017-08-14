@@ -50,8 +50,10 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     char* payloadptr;
     char dataSt;
     int state;
+    int len = strlen(message->payload);
 
     printf("Message arrived\n");
+    printf("Message Length: %i \n",len);
     printf("     topic: %s\n", topicName);
     printf("   message: ");
 
