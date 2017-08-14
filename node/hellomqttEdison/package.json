@@ -1,0 +1,23 @@
+{
+  "name": "hellomqttedison",
+  "version": "1.0.0",
+  "description": "Hello World MQTT Edison",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBeachMaster/samples.git"
+  },
+  "keywords": [
+    "Edison",
+    "MQTT"
+  ],
+  "author": "Arthur Kennedy Otieno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBeachMaster/samples/issues"
+  },
+  "homepage": "https://github.com/TheBeachMaster/samples#readme"
+}
