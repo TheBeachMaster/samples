@@ -50,7 +50,7 @@ void loop()
 		snprintf(msg, 75, "Data #%ld", value);
 		Serial.print("Publish message: ");
 		Serial.println(msg);
-		client.publish("wifi101", msg);
+		client.publish("kapua-sys/Wifi101/wifi101", msg);
 	}
 }
 void connectToWPA()
@@ -155,9 +155,9 @@ void _keepAlive() {
 		Serial.print(F("Contacting Server on: "));
 		Serial.print(broker);
 		Serial.println();
-		if (client.connect("AfricasTalkingIOT","kapua-broker","kapua-password")) {
+		if (client.connect("Wifi101","kapua-broker","kapua-password")) {
 			Serial.println("connected");
-			client.publish("wifi101", "Wifi101");
+			client.publish("kapua-sys/Wifi101/wifi101k", "Wifi101");
 			client.subscribe("wifi");
 		}
 		else {
