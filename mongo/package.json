@@ -1,0 +1,24 @@
+{
+    "name": "mongo",
+    "version": "1.0.0",
+    "description": "MongoDB on Node",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheBeachMaster/samples.git"
+    },
+    "keywords": [
+        "Mongo",
+        "Node"
+    ],
+    "author": "Arthur Kennedy Otieno",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TheBeachMaster/samples/issues"
+    },
+    "homepage": "https://github.com/TheBeachMaster/samples#readme"
+}
