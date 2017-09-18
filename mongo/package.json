@@ -23,6 +23,7 @@
     "homepage": "https://github.com/TheBeachMaster/samples#readme",
     "dependencies": {
         "assert": "^1.4.1",
-        "mongodb": "^2.2.31"
+        "mongodb": "^2.2.31",
+        "mqtt": "^2.13.0"
     }
 }
