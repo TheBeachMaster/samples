@@ -4,6 +4,7 @@
   "description": "PBDF2 Password Hash Application for MQTT-Auth-Plugin  Written in Node",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/TheBeachMaster/samples/issues"
   },
-  "homepage": "https://github.com/TheBeachMaster/samples#readme"
+  "homepage": "https://github.com/TheBeachMaster/samples#readme",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  }
 }
