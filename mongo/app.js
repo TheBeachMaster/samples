@@ -6,7 +6,7 @@ let url = `mongodb://${user}:${password}@ds139954.mlab.com:39954/mqttdatastore`;
 
 let insertData = function(db, callback) {
     let collection = db.collection('messages');
-    collection.insertMany([{ a: 1 }, { a: 2 }, { a: 3 }], function(err, result) {
+    collection.insertMany([{ a: 4 }, { a: 5 }, { a: 6 }], function(err, result) {
         assert.equal(err, null);
         assert.equal(3, result.result.n);
         assert.equal(3, result.ops.length);
