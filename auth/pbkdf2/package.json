@@ -1,0 +1,22 @@
+{
+  "name": "pbkdf2",
+  "version": "1.0.0",
+  "description": "PBDF2 Password Hash Application for MQTT-Auth-Plugin  Written in Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBeachMaster/samples.git"
+  },
+  "keywords": [
+    "PBKDF2"
+  ],
+  "author": "Arthur Kennedy Otieno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBeachMaster/samples/issues"
+  },
+  "homepage": "https://github.com/TheBeachMaster/samples#readme"
+}
