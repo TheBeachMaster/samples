@@ -1,17 +1,17 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define RFID_RST         8          
-#define RFID_SS          9         
+#define RFID_RST         8
+#define RFID_SS          9
 MFRC522 rfid(RFID_SS, RFID_RST);
 ///Checks for an Associated Tag
 int asscociatedTag(char cardNum, char* cardBank[],char* assocNum[]);
 //Initializes the RFID Library
 void rfidInit();
 //Read RFID UID
-void readUID();
+int readUID();
 
-//Buffer 
+//Buffer
 char card_buffer[10];
 char _tagSwiped=0;
 
@@ -44,7 +44,7 @@ void setup()
     }
     rfidInit();
     Serial.println("Setting Up");
-	
+
 }
  int isCardAvailable(char* storageBank[],char cardVal[10])
  {
@@ -65,23 +65,23 @@ void setup()
      {
         return -1;
      }
-    
+
  }
 
 void loop()
 {
-    readUID();
+     readUID();
     // tagSwiped();
-    // while(_tagSwiped == 1){
-    //     Serial.println("Swiped!");
-    //     delay(5000);
-    // }
-    // // break;
+    //  while(_tagSwiped == 1){
+    //      Serial.println("Swiped!");
+    //    break;
+    //  }
+
     // if(_tagSwiped == 1)
     // {
     //     Serial.println("Swiped!");
     // }
-	
+
 }
 
  void rfidInit()
@@ -91,7 +91,7 @@ void loop()
     rfid.PCD_Init();
     rfid.PCD_SetAntennaGain(rfid.RxGain_max);
  }
- void readUID()
+ int readUID()
  {
     rfidInit();
     // Getting ready for Reading Tags/Cards
@@ -103,10 +103,10 @@ void loop()
     }
     // Assuming Tags have 4 byte UID, others may have 7 (Reminder)
     Serial.println(F("Scanned Access Tag Unique ID:"));
-  
+
     for (int i = 0; i < 4; i++) {
       readCard[i] = rfid.uid.uidByte[i];
-  
+
       // Operation on lower byte to enable ID in a nibble rather than a byte
       byte lowerByte = (readCard[i] & 0x0F);
       int lowerInt = (int) lowerByte; //converting byte into int
@@ -114,13 +114,13 @@ void loop()
       itoa(lowerInt, lowerChar, 16);
       byte upperByte = (readCard[i] >> 4);
       int upperInt = (int) upperByte;
-  
+
       // Operation on upper byte to enable ID in a nibble rather than a byte
       char upperChar[1];
       itoa(upperInt, upperChar, 16);
       int j = i * 2;
       int k = j + 1;
-  
+
       // Storing UID in char array (card_buffer)
       card_buffer[k] = lowerChar[0];
       card_buffer[j] = upperChar[0];
@@ -152,13 +152,13 @@ void loop()
     // if (uidBank[0] == card_buffer)
     // {
     //     Serial.println("Found");
-    
+
     // }
-   
+
     // if (card_buffer == uidBank[i])
     // {
     //     Serial.println("Found!");
-       
+
     // }
     // for (int i = 0; i < availableTags; i++)
     // {
@@ -175,13 +175,20 @@ void loop()
     //        // return 0;
     //     }
     // }
+    return response;
     rfid.PICC_HaltA(); // Stop reading
-    return 0;
+    delay(5000);
+    rfid.flush();
  }
  uint8_t tagSwiped(){
-    rfidInit();
+    //rfidInit();
+    readUID();
     if (rfid.PICC_IsNewCardPresent()) {
          _tagSwiped = 1;
         return 0; //If a new Access Card is placed to RFID reader continue
+    }else
+    {
+        _tagSwiped = 0;
+        return 1;
     }
   }
