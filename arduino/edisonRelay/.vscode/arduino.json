@@ -1,0 +1,5 @@
+{
+    "sketch": "relay.ino",
+    "board": "Intel:i686:izmir_ec",
+    "port": "COM8"
+}
