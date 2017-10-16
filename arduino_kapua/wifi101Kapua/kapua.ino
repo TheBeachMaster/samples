@@ -2,8 +2,8 @@
 #include <WiFi101.h>
 #include <PubSubClient.h>
 
-char ssid[] = "Lenovo A7010";     //  your network SSID (name)
-char pass[] = "Infrared@1944";  // your network password ccad32da7b5d8
+char ssid[] = "theBIGbox";     //  your network SSID (name)
+char pass[] = "31c94145e72d2";  // your network password ccad32da7b5d8
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
 char msg[50];
 int value = 0;
@@ -157,7 +157,7 @@ void _keepAlive() {
 		Serial.println();
 		if (client.connect("Wifi101","kapua-broker","kapua-password")) {
 			Serial.println("connected");
-			client.publish("kapua-sys/Wifi101/wifi101k", "Wifi101");
+			client.publish("kapua-sys/Wifi101/keepAlive", "Wifi101");
 			client.subscribe("kapua-sys/Wifi101/wifi");
 		}
 		else {
